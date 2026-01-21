@@ -39,7 +39,7 @@ A comprehensive backup script that creates:
 ./backup-project.sh
 ```
 
-**Backup Location:** `~/.git-backups/swr-scenarios/`
+**Backup Location:** `~/.git-backups/YOUR_REPO_NAME/`
 
 ### 3. GitHub Actions Workflow
 
@@ -78,7 +78,7 @@ Plus:
 ### Step 1: Test the Hooks (Do This Now!)
 
 ```bash
-cd /sessions/lucid-wizardly-tesla/mnt/swr-scenarios
+cd /sessions/YOUR_REPO_NAME
 
 # Create a test file
 echo "test" > test-file.txt
@@ -109,8 +109,8 @@ git commit -m "Remove test file"
 ### Step 3: Verify Backups Exist
 
 ```bash
-ls -lh ~/.git-backups/swr-scenarios/bundles/
-ls -lh ~/.git-backups/swr-scenarios/snapshots/
+ls -lh ~/.git-backups/YOUR_REPO_NAME/bundles/
+ls -lh ~/.git-backups/YOUR_REPO_NAME/snapshots/
 ```
 
 **Expected Result:** You should see your backup files listed.
@@ -131,7 +131,7 @@ git push origin main
 ```
 
 **After pushing:**
-1. Go to https://github.com/tgiffin/swr-scenarios
+1. Go to https://github.com/USER_NAME/YOUR_REPO_NAME
 2. Click the "Actions" tab
 3. You should see "Automated Repository Backup" workflow
 4. It will run automatically daily and on every push to main
@@ -266,7 +266,7 @@ git fetch origin
 git reset --hard origin/main
 
 # Option B: Clone from backup bundle
-ls ~/.git-backups/swr-scenarios/bundles/
+ls ~/.git-backups/YOUR_REPO_NAME/bundles/
 git clone LATEST_BACKUP.bundle ~/recovered-project
 ```
 
@@ -277,7 +277,7 @@ git clone LATEST_BACKUP.bundle ~/recovered-project
 # 2. Your backups exist in ~/.git-backups/
 
 # Create new GitHub repo, then:
-git remote set-url origin https://github.com/tgiffin/NEW_REPO.git
+git remote set-url origin https://github.com/USER_NAME/NEW_REPO.git
 git push -u origin main
 ```
 
@@ -319,7 +319,7 @@ Check off these items to ensure everything is working:
 **Backups:**
 - [ ] Backup script is executable (`test -x ./backup-project.sh`)
 - [ ] Ran `./backup-project.sh` successfully
-- [ ] Backups exist in `~/.git-backups/swr-scenarios/`
+- [ ] Backups exist in `~/.git-backups/YOUR_REPO_NAME/`
 - [ ] Can list backup bundles
 
 **GitHub:**
@@ -366,7 +366,7 @@ Check off these items to ensure everything is working:
 1. **Don't panic!** You have multiple backups
 2. Check `QUICK_REFERENCE.md` for emergency commands
 3. Review `PROJECT_SAFETY_GUIDE.md` recovery section
-4. Your backups are in `~/.git-backups/swr-scenarios/`
+4. Your backups are in `~/.git-backups/YOUR_REPO_NAME/`
 
 ### If you want to learn more:
 - Read `PROJECT_SAFETY_GUIDE.md` for detailed workflows
@@ -411,7 +411,7 @@ Check off these items to ensure everything is working:
 All files created in your project:
 
 ```
-swr-scenarios/
+YOUR_REPO_NAME/
 ├── .git/hooks/
 │   ├── pre-commit              ✅ Installed
 │   ├── pre-push                ✅ Installed
@@ -466,4 +466,4 @@ swr-scenarios/
 
 *Installation Date: January 20, 2026*
 *Project: swr-scenarios*
-*Repository: https://github.com/tgiffin/swr-scenarios*
+*Repository: https://github.com/USER_NAME/YOUR_REPO_NAME*
