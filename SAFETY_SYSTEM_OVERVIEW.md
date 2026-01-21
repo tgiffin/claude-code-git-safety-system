@@ -266,7 +266,7 @@ recovery    commit        commit that   bundle or
 ## 📁 File System Layout
 
 ```
-swr-scenarios/                     (Your project)
+YOUR_REPO_NAME/                     (Your project)
 ├── .git/
 │   ├── hooks/
 │   │   ├── pre-commit            ✓ Blocks bad commits
@@ -290,7 +290,7 @@ swr-scenarios/                     (Your project)
     └── SAFETY_SYSTEM_OVERVIEW.md ← This file
 
 ~/.git-backups/                   (Backup storage)
-└── swr-scenarios/
+└── YOUR_REPO_NAME/
     ├── bundles/
     │   └── [timestamp]_complete.bundle
     └── snapshots/
@@ -334,7 +334,7 @@ test -x ./backup-project.sh && echo "✓ Backup script ready"
 test -f .github/workflows/backup.yml && echo "✓ GitHub Actions configured"
 
 # Check backups exist
-ls ~/.git-backups/swr-scenarios/bundles/ 2>/dev/null && echo "✓ Backups exist"
+ls ~/.git-backups/YOUR_REPO_NAME/bundles/ 2>/dev/null && echo "✓ Backups exist"
 
 # All green? You're protected! 🎉
 ```
@@ -354,10 +354,10 @@ git reset --soft HEAD~1
 git fetch origin && git reset --hard origin/main
 
 # FIND backups
-ls -lt ~/.git-backups/swr-scenarios/bundles/
+ls -lt ~/.git-backups/YOUR_REPO_NAME/bundles/
 
 # CLONE from backup
-git clone ~/.git-backups/swr-scenarios/bundles/LATEST.bundle ~/recovered
+git clone ~/.git-backups/YOUR_REPO_NAME/bundles/LATEST.bundle ~/recovered
 
 # RUN backup NOW
 ./backup-project.sh
