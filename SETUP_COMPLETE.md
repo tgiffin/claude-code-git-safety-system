@@ -17,7 +17,7 @@ Three automatic hooks that run during git operations:
 **🚀 Pre-push Hook** (`.git/hooks/pre-push`)
 - Creates automatic backup bundle before every push
 - Shows what commits will be pushed
-- Keeps last 20 backups in `~/.git-backups/swr-scenarios/`
+- Keeps last 20 backups in `~/.git-backups/YOUR_REPO_NAME/`
 - Prevents push if backup fails
 
 **📋 Commit-msg Hook** (`.git/hooks/commit-msg`)
@@ -85,7 +85,7 @@ Three automatic hooks that run during git operations:
 ### Step 1: Test Your Hooks (Do This Now!)
 ```bash
 # Test that hooks are working
-cd /sessions/lucid-wizardly-tesla/mnt/swr-scenarios
+cd /sessions/PATH/YOUR_REPO_NAME
 
 # Create a test file
 echo "test" > test-file.txt
@@ -105,7 +105,7 @@ git commit -m "Remove test file"
 ./backup-project.sh
 
 # Verify backup was created
-ls -lh ~/.git-backups/swr-scenarios/bundles/
+ls -lh ~/.git-backups/YOUR_REPO_NAME/bundles/
 ```
 
 ### Step 3: Enable GitHub Branch Protection
@@ -124,7 +124,7 @@ git push origin main
 ```
 
 After pushing, verify:
-1. Go to your repo: https://github.com/tgiffin/swr-scenarios
+1. Go to your repo: https://github.com/USER_NAME/YOUR_REPO_NAME
 2. Click "Actions" tab
 3. You should see "Automated Repository Backup" workflow
 4. It will run automatically daily and on every push to main
@@ -133,7 +133,7 @@ After pushing, verify:
 Add a badge to your README.md to show backup status:
 
 ```markdown
-![Backup Status](https://github.com/tgiffin/swr-scenarios/actions/workflows/backup.yml/badge.svg)
+![Backup Status](https://github.com/USER_NAME/YOUR_REPO_NAME/actions/workflows/backup.yml/badge.svg)
 ```
 
 ## 📖 Learning Your New System
@@ -178,8 +178,8 @@ Expected output:
 
 ### Test 3: Check Backup Location
 ```bash
-ls -lh ~/.git-backups/swr-scenarios/bundles/
-ls -lh ~/.git-backups/swr-scenarios/snapshots/
+ls -lh ~/.git-backups/YOUR_REPO_NAME/bundles/
+ls -lh ~/.git-backups/YOUR_REPO_NAME/snapshots/
 ```
 
 Should show your backup files.
@@ -269,7 +269,7 @@ You now have **4 layers** of protection:
 1. **Don't panic!** Your backups are there
 2. Open **QUICK_REFERENCE.md** for emergency commands
 3. Check **PROJECT_SAFETY_GUIDE.md** recovery section
-4. Your backups are in: `~/.git-backups/swr-scenarios/`
+4. Your backups are in: `~/.git-backups/YOUR_REPO_NAME/`
 
 ### Regular Questions:
 - "How do I undo changes?" → **QUICK_REFERENCE.md**
@@ -327,4 +327,4 @@ Your project is now significantly safer. You can work with confidence knowing th
 ---
 
 *Last updated: $(date)*
-*System installed for: swr-scenarios project*
+*System installed for: YOUR_REPO_NAME project*
