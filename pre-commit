@@ -1,0 +1,62 @@
+#!/bin/bash
+# Git Safety Hook - Prevents catastrophic deletions and massive changes
+# This hook runs before every commit
+
+echo "🔍 Running safety checks..."
+
+# Check for mass deletions (more than 50% of files)
+TOTAL_FILES=$(git ls-files | wc -l)
+DELETED_FILES=$(git diff --cached --name-only --diff-filter=D | wc -l)
+
+if [ "$TOTAL_FILES" -gt 0 ]; then
+    DELETION_PERCENTAGE=$((DELETED_FILES * 100 / TOTAL_FILES))
+
+    if [ "$DELETION_PERCENTAGE" -gt 50 ]; then
+        echo ""
+        echo "⚠️  DANGER: This commit would delete $DELETION_PERCENTAGE% of your files!"
+        echo "   Total files: $TOTAL_FILES"
+        echo "   Files being deleted: $DELETED_FILES"
+        echo ""
+        echo "   This looks suspicious. Please review carefully."
+        echo "   To bypass this check, use: git commit --no-verify"
+        echo ""
+        exit 1
+    fi
+fi
+
+# Check for deletion of critical files
+CRITICAL_FILES=("package.json" "README.md" "vite.config.ts" "tsconfig.json" ".gitignore")
+for file in "${CRITICAL_FILES[@]}"; do
+    if git diff --cached --name-only --diff-filter=D | grep -q "^$file$"; then
+        echo ""
+        echo "⚠️  WARNING: Critical file '$file' is being deleted!"
+        echo "   Are you sure this is intentional?"
+        echo "   To bypass this check, use: git commit --no-verify"
+        echo ""
+        exit 1
+    fi
+done
+
+# Check for massive changes (more than 1000 lines changed)
+LINES_CHANGED=$(git diff --cached --shortstat | grep -oE '[0-9]+ insertion|[0-9]+ deletion' | grep -oE '[0-9]+' | awk '{sum+=$1} END {print sum}')
+
+if [ ! -z "$LINES_CHANGED" ] && [ "$LINES_CHANGED" -gt 1000 ]; then
+    echo ""
+    echo "⚠️  LARGE CHANGE DETECTED: $LINES_CHANGED lines modified"
+    echo "   This is a significant change. Please review carefully."
+    echo ""
+    read -p "   Continue with commit? (yes/no): " response
+    if [ "$response" != "yes" ]; then
+        echo "   Commit cancelled."
+        exit 1
+    fi
+fi
+
+# Show summary of changes
+echo ""
+echo "📊 Change Summary:"
+git diff --cached --shortstat
+echo ""
+
+echo "✅ Safety checks passed!"
+exit 0

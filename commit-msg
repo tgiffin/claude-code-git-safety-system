@@ -1,0 +1,25 @@
+#!/bin/bash
+# Commit message hook - Provides helpful guidance
+# Shows a summary of changes in the commit
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Skip if this is an amended commit or merge
+if [ -n "$COMMIT_MSG" ]; then
+    # Show summary to help verify the commit is correct
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "📝 COMMIT SUMMARY"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "Message: $COMMIT_MSG"
+    echo ""
+    echo "Files changed:"
+    git diff --cached --stat
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+fi
+
+exit 0

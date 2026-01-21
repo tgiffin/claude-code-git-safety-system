@@ -1,0 +1,40 @@
+#!/bin/bash
+# Pre-push hook - Creates a backup before pushing
+# This ensures you always have a local backup before changes go to GitHub
+
+echo "🔒 Running pre-push safety checks..."
+
+# Get current branch
+CURRENT_BRANCH=$(git branch --show-current)
+
+# Create backup directory if it doesn't exist
+BACKUP_DIR="$HOME/.git-backups/swr-scenarios"
+mkdir -p "$BACKUP_DIR"
+
+# Create timestamped backup
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+BACKUP_FILE="$BACKUP_DIR/backup_${CURRENT_BRANCH}_${TIMESTAMP}.bundle"
+
+echo "📦 Creating backup bundle: $BACKUP_FILE"
+git bundle create "$BACKUP_FILE" --all
+
+if [ $? -eq 0 ]; then
+    echo "✅ Backup created successfully!"
+
+    # Keep only last 20 backups to save space
+    cd "$BACKUP_DIR"
+    ls -t backup_*.bundle | tail -n +21 | xargs rm -f 2>/dev/null
+    echo "📚 Backup archive maintained (keeping last 20 backups)"
+else
+    echo "❌ Backup failed! Push cancelled for safety."
+    exit 1
+fi
+
+# Show what's about to be pushed
+echo ""
+echo "📤 About to push the following commits:"
+git log origin/$CURRENT_BRANCH..$CURRENT_BRANCH --oneline --max-count=10
+echo ""
+
+echo "✅ Pre-push checks complete!"
+exit 0
