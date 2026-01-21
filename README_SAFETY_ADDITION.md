@@ -23,7 +23,7 @@ This project includes a comprehensive Git safety system to prevent data loss dur
 ./backup-project.sh
 
 # Check backup status
-ls ~/.git-backups/swr-scenarios/bundles/
+ls ~/.git-backups/YOUR_REPO_NAME/bundles/
 
 # Emergency recovery
 git checkout HEAD -- .  # Restore uncommitted changes
@@ -39,7 +39,7 @@ git checkout HEAD -- .  # Restore uncommitted changes
 
 ### Backup Status
 
-![Backup Status](https://github.com/tgiffin/swr-scenarios/actions/workflows/backup.yml/badge.svg)
+![Backup Status](https://github.com/USER_NAME/YOUR_REPO_NAME/actions/workflows/backup.yml/badge.svg)
 
 ### Recovery Options
 
