@@ -14,7 +14,7 @@ Branch protection prevents:
 
 ### 1. Enable Branch Protection for Main Branch
 
-1. Go to your repository on GitHub: https://github.com/tgiffin/swr-scenarios
+1. Go to your repository on GitHub
 2. Click **Settings** (top menu)
 3. Click **Branches** (left sidebar)
 4. Under "Branch protection rules", click **Add rule**
@@ -113,15 +113,15 @@ Add a second remote backup location (like GitLab or Bitbucket):
 
 \`\`\`bash
 # Add GitLab as a second remote
-git remote add gitlab git@gitlab.com:yourusername/swr-scenarios.git
+git remote add gitlab git@gitlab.com:yourusername/YOUR_REPO_NAME.git
 
 # Push to both remotes
 git push origin main
 git push gitlab main
 
 # Or push to all remotes at once
-git remote set-url --add --push origin git@github.com:tgiffin/swr-scenarios.git
-git remote set-url --add --push origin git@gitlab.com:yourusername/swr-scenarios.git
+
+git remote set-url --add --push origin git@gitlab.com:yourusername/YOUR_REPO_NAME.git
 git push origin main  # Now pushes to both!
 \`\`\`
 
@@ -204,11 +204,11 @@ git reset --hard origin/main
 
 \`\`\`bash
 # From Git bundle
-git clone ~/.git-backups/swr-scenarios/bundles/LATEST_BACKUP.bundle restored-project
+git clone ~/.git-backups/YOUR_REPO_NAME/bundles/LATEST_BACKUP.bundle restored-project
 
 # From snapshot
 cd ~
-tar -xzf ~/.git-backups/swr-scenarios/snapshots/YYYY-MM/TIMESTAMP_snapshot.tar.gz
+tar -xzf ~/.git-backups/YOUR_REPO_NAME/snapshots/YYYY-MM/TIMESTAMP_snapshot.tar.gz
 \`\`\`
 
 ### If GitHub repository is deleted:
