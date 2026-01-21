@@ -199,11 +199,11 @@ git reset --hard origin/main
 #### Option 4: Restore from backup bundle
 ```bash
 # Find latest backup
-ls -lt ~/.git-backups/swr-scenarios/bundles/
+ls -lt ~/.git-backups/YOUR_REPO_NAME/bundles/
 
 # Clone from backup
 cd ~
-git clone ~/.git-backups/swr-scenarios/bundles/LATEST_FILE.bundle recovered-project
+git clone ~/.git-backups/YOUR_REPO_NAME/bundles/LATEST_FILE.bundle recovered-project
 
 # Copy recovered files back
 cp -r recovered-project/* /path/to/your/project/
@@ -212,11 +212,11 @@ cp -r recovered-project/* /path/to/your/project/
 #### Option 5: Restore from snapshot
 ```bash
 # Find latest snapshot
-ls -lt ~/.git-backups/swr-scenarios/snapshots/*/
+ls -lt ~/.git-backups/YOUR_REPO_NAME/snapshots/*/
 
 # Extract snapshot
 cd ~
-tar -xzf ~/.git-backups/swr-scenarios/snapshots/YYYY-MM/TIMESTAMP_snapshot.tar.gz
+tar -xzf ~/.git-backups/YOUR_REPO_NAME/snapshots/YYYY-MM/TIMESTAMP_snapshot.tar.gz
 
 # This creates a folder with your project - copy what you need
 ```
@@ -242,7 +242,7 @@ git push origin fix/undo-bad-changes
 3. **Create new repo** on GitHub with same name
 4. **Re-push everything:**
    ```bash
-   git remote set-url origin https://github.com/tgiffin/swr-scenarios.git
+   git remote set-url origin https://github.com/USER_NAME/YOUR_REPO_NAME.git
    git push -u origin main
    ```
 
@@ -290,13 +290,13 @@ git branch --sort=-committerdate | head -10
 ### Backup Management
 ```bash
 # List all backups
-ls -lh ~/.git-backups/swr-scenarios/bundles/
+ls -lh ~/.git-backups/YOUR_REPO_NAME/bundles/
 
 # Check backup size
-du -sh ~/.git-backups/swr-scenarios/
+du -sh ~/.git-backups/YOUR_REPO_NAME/
 
 # Verify backup integrity
-git bundle verify ~/.git-backups/swr-scenarios/bundles/BACKUP_FILE.bundle
+git bundle verify ~/.git-backups/YOUR_REPO_NAME/bundles/BACKUP_FILE.bundle
 ```
 
 ## 🤖 Working Effectively with Claude Code
