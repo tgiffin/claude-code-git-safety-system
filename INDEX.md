@@ -217,7 +217,7 @@ Quick reference to find the right document for your needs.
 
 ```
 Your Project:
-  /sessions/lucid-wizardly-tesla/mnt/swr-scenarios/
+  /sessions/YOUR_REPO_NAME/
 
 Git Hooks:
   .git/hooks/pre-commit
@@ -241,8 +241,8 @@ Documentation:
   README_SAFETY_ADDITION.md
 
 Backups:
-  ~/.git-backups/swr-scenarios/bundles/
-  ~/.git-backups/swr-scenarios/snapshots/
+  ~/.git-backups/YOUR_REPO_NAME/bundles/
+  ~/.git-backups/YOUR_REPO_NAME/snapshots/
 ```
 
 ## ❓ Quick Q&A
@@ -260,7 +260,7 @@ A: All serve different purposes, but [QUICK_REFERENCE.md](QUICK_REFERENCE.md) fo
 A: Keep all! They're small and serve different needs. But minimum: Keep QUICK_REFERENCE.md and backup-project.sh
 
 **Q: Where are my actual backups?**
-A: `~/.git-backups/swr-scenarios/`
+A: `~/.git-backups/YOUR_REPO_NAME/`
 
 **Q: How do I update these docs?**
 A: Edit the markdown files directly. They're in your project.
