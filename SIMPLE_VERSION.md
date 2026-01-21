@@ -175,7 +175,7 @@ The rest is for:
 
 ---
 
-## ✨ My Recommendation
+## ✨ Claude Recommendation
 
 ### For Your Situation (Solo, Small Project):
 
@@ -231,7 +231,7 @@ git checkout HEAD -- .
 git fetch origin && git reset --hard origin/main
 
 # Or clone from your backup
-git clone ~/.git-backups/swr-scenarios/bundles/LATEST.bundle ~/recovered
+git clone ~/.git-backups/YOUR_REPO_NAME/bundles/LATEST.bundle ~/recovered
 ```
 
 **That's literally it.**
