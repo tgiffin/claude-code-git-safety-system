@@ -32,7 +32,7 @@ git commit -m "Clean up test"
 ./backup-project.sh
 
 # Verify backup was created
-ls ~/.git-backups/swr-scenarios/bundles/
+ls ~/.git-backups/YOUR_REPO_NAME/bundles/
 ```
 
 ### 3. Print the References
@@ -87,7 +87,7 @@ Print these and keep them visible:
 
 **Your backups are here:**
 ```bash
-~/.git-backups/swr-scenarios/bundles/
+~/.git-backups/YOUR_REPO_NAME/bundles/
 ```
 
 ### Questions
