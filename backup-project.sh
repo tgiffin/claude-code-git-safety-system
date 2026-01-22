@@ -6,7 +6,7 @@ set -e
 
 PROJECT_NAME="swr-scenarios"
 BACKUP_BASE_DIR="$HOME/.git-backups/$PROJECT_NAME"
-PROJECT_DIR="/sessions/lucid-wizardly-tesla/mnt/swr-scenarios"
+PROJECT_DIR="$(git rev-parse --show-toplevel)"
 
 # Create backup directories
 mkdir -p "$BACKUP_BASE_DIR/bundles"
